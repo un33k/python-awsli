@@ -2,8 +2,6 @@
 import sys
 import types
 import optparse
-from decorator import decorator
-
 
 class OptParseMixin(object):
     """ Mixin to handle help options at program vs. command level """
@@ -26,11 +24,18 @@ class OptParseMixin(object):
                 help="list available commands and exit"
         )
         opts, args = self.parser.parse_args()
-        if not args and opts.help:
-            self.parser.print_help()
+        if not args:
+            if opts.list:
+                self.cmd_list()
+            else:
+                self.parser.print_help()
             sys.exit(0)
-        elif not args and opts.list:
-            self.cmd_list()
+        elif opts.help:
+            method = self.get_command(args[0])
+            if method:
+                self.print_help(method.__doc__.split('Usage:')[-1].format(args[0]))
+            else:
+                self.print_help()
             sys.exit(0)
         else:
             self.parser.remove_option("-h")

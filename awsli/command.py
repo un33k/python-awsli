@@ -30,16 +30,14 @@ class OptParseMixin(object):
             else:
                 self.parser.print_help()
             sys.exit(0)
-        elif opts.help:
+        self.parser.remove_option("-l")
+        if opts.help:
             method = self.get_command(args[0])
             if method:
                 self.print_help(method.__doc__.split('Usage:')[-1].format(args[0]))
             else:
                 self.print_help()
             sys.exit(0)
-        else:
-            self.parser.remove_option("-h")
-            self.parser.remove_option("-l")
 
 
 class BaseCommand(OptParseMixin):
@@ -48,13 +46,7 @@ class BaseCommand(OptParseMixin):
     hidden_cmds = ['cmd_empty', 'cmd_unknown', 'cmd_list']
     def __init__(self, *args, **kwargs):
         super(BaseCommand, self).__init__(*args, **kwargs)
-        self.parser.add_option(
-                "-h", "--help",
-                action="store_true",
-                dest="help",
-                default=False,
-                help="show this help message and exit"
-        )
+
 
     def print_help(self, usage='%prog <command> [options]', message=''):
         """ Prints help """

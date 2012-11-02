@@ -65,7 +65,9 @@ class BaseCommand(object):
 
     def print_output(self, output):
         if output:
-            if self.options.json:
+            if self.options.raw:
+                print output
+            elif self.options.json:
                 print json.dumps(output, indent=2, sort_keys=True)
             elif self.is_iterable(output):
                 for i in output:

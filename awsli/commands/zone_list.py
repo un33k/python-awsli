@@ -1,21 +1,15 @@
 #!/usr/bin/env python
 
-import os
-import sys
-import types
-import optparse
-import subprocess
-from boto.ec2.connection import EC2Connection
 from awsli.base import *
 
 
 class AWSZonesList(BaseCommand, AWSConnectionMixin):
 
     def get_formatted_item(self, item):
-        node = {}
-        node['name']        = item.name
-        node['endpoint']    = item.endpoint
-        return node
+        formatted = {}
+        formatted['name']        = item.name
+        formatted['endpoint']    = item.endpoint
+        return formatted
 
     def execute(self):
         regions = self.conn.get_all_regions()

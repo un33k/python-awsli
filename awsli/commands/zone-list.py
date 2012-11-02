@@ -12,7 +12,10 @@ from awsli.base import *
 class AWSZonesList(BaseCommand, AWSConnectionMixin):
 
     def get_formatted_item(self, item):
-        return '{name: %s, endpoint: %s}' % (item.name, item.endpoint)
+        node = {}
+        node['name']        = item.name
+        node['endpoint']    = item.endpoint
+        return node
 
     def execute(self):
         regions = self.conn.get_all_regions()

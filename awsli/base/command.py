@@ -5,6 +5,7 @@ class BaseCommand(object):
     def __init__(self, *args, **kwargs):
         self.install_optparse()
         self.add_options()
+        self.options, self.arguments = self.parser.parse_args()
 
     def install_optparse(self):
         self.parser = optparse.OptionParser()

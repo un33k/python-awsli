@@ -1,6 +1,7 @@
 from command import BaseCommand
+from default import AWSDefaultMixin
 from connection import AWSConnectionMixin
-from credentials import AWSCredentialsMixin
+from credential import AWSCredentialMixin
 
 
 

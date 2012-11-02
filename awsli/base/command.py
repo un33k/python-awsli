@@ -17,6 +17,12 @@ class BaseCommand(object):
         print >> sys.stderr, message
         self.parser.print_help()
 
+    def get_output(self):
+        pass
+    
+    def print_output(self):
+        pass
+
     def execute(self):
         self.print_help(message='must overload execute')
 

@@ -9,7 +9,12 @@ from boto.ec2.connection import EC2Connection
 from awsli.base import *
 
 
-class AWSListZones(BaseCommand, AWSCredentialsMixin, AWSConnectionMixin):
+class AWSZonesList(
+        BaseCommand,
+        AWSDefaultMixin,
+        AWSCredentialMixin,
+        AWSConnectionMixin
+    ):
 
     def add_options(self):
         self.parser.add_option(
@@ -33,7 +38,7 @@ class AWSListZones(BaseCommand, AWSCredentialsMixin, AWSConnectionMixin):
         print json.dumps(reglist, indent=2, sort_keys=True)
 
 if __name__ == '__main__':
-    bc = AWSListZones()
+    bc = AWSZonesList()
     bc.execute()
 
 

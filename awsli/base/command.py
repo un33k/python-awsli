@@ -97,7 +97,7 @@ class BaseCommand(object):
         return self.print_output(output)
 
     def execute(self):
-        response = 'must overload execut'
+        response = 'must overload execute'
         return process_response(response)
 
 if __name__ == '__main__':

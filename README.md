@@ -4,11 +4,12 @@ AWSLI
 **Amazon Web Services Line Interpreter**
 
 **Author:** Val Neekman [ info@neekware.com, @vneekman ]
+**Contributor:** Sam Odivwri [sam.ese.odivwri@gmail.com]
 
 Overview
 ========
 
-A Line Interpreter for Amazon Web Services.
+A Line Interpreter for Amazon Web Services with tab completion.
 
 How to install
 ==================
@@ -27,6 +28,26 @@ How to use
 =================
 
 ``Usage``
+run cli.py
+Welcome to AWSLI console!
+`(cli)` help [tab]
+exit                 help                 node_list          
+security_group_list  zone_list   
+`(cli)` ? [tab]
+exit                 help                 node_list
+`(cli)` help node[tab]_list
+Usage: node_list.py [options]
+
+Options:
+  -h, --help            show this help message and exit
+  -k KEY, --key=KEY     amazon web services access key id. aka:
+                        aws_access_key_id
+  -s SECRET, --secret=SECRET
+                        amazon web services secret access key. aka:
+                        aws_secret_access_key
+  -j, --json            print output as json when possible
+  -r, --raw             print output raw - as is
+`(cli)` 
 
 ``Note:``
 

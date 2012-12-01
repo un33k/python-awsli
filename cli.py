@@ -40,13 +40,6 @@ class AmazonWebServicesLineInterpreter(BaseCommand, cmd.Cmd):
         
     def add_options(self):
         self.parser.add_option(
-                "-l", "--list",
-                action="store_true",
-                dest="list",
-                default=False,
-                help="list available commands and exit"
-        )
-        self.parser.add_option(
                 "-q", "--quiet",
                 action="store_true",
                 dest="quiet",
@@ -74,14 +67,20 @@ class AmazonWebServicesLineInterpreter(BaseCommand, cmd.Cmd):
     
     def get_names(self):
         """
-        Overides Cmd.get_names inorder to pull in awsli commands
+        Overides Cmd.get_names in order to pull in awsli commands
         """
         # This method used to pull in base class attributes
         # at a time dir() didn't do it yet.
         attrs = dir(self.__class__)
         attrs.extend(self.get_cmd_list())
         return attrs
-    
+
+    def do_list(self, command):
+        """Get command(s) lis
+           'list' or 'ls' with no arguments prints the available commands list
+        """
+        self.print_cmd_list()
+
     def do_help(self, command):
         """Get help on commands
            'help' or '?' with no arguments prints a list of commands for which help is available

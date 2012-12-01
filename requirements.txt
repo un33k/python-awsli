@@ -1,3 +1,5 @@
+# sudo apt-get install mono-runtime
+
 boto>=2.6.0
 
 

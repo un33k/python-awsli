@@ -5,16 +5,24 @@ AWSLI
 
 **Author:** Val Neekman [ info@neekware.com, @vneekman ]
 
-**Contributor:** Sam Odivwri [sam.ese.odivwri@gmail.com]
+
+Credit
+=======
+**Contributor(s):** 
+    1. Sam Odivwri [sam.ese.odivwri@gmail.com]
+
 
 Overview
 ========
 
 A Line Interpreter for Amazon Web Services with tab completion.
 
+
 How to install
 ==================
-
+    Dependancies:
+    1. $ sudo apt-get install mono-runtime (or equivalent on your distro.)
+    
     1. easy_install python-awsli
     2. pip install python-awsli
     3. git clone http://github.com/un33k/python-awsli
@@ -36,7 +44,7 @@ Welcome to AWSLI console!
 
 `(cli)` help [tab]
 
->exit                 help                 node_list          
+>exit                 help                 node_list
 >security_group_list  zone_list   
 
 `(cli)` ? [tab]
@@ -68,6 +76,7 @@ Options:
 `(cli)` 
 
 ``Note:``
+
 
 Running the tests
 =================

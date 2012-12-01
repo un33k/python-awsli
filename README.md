@@ -4,6 +4,7 @@ AWSLI
 **Amazon Web Services Line Interpreter**
 
 **Author:** Val Neekman [ info@neekware.com, @vneekman ]
+
 **Contributor:** Sam Odivwri [sam.ese.odivwri@gmail.com]
 
 Overview
@@ -27,19 +28,20 @@ How to install
 How to use
 =================
 
-``Usage``
+``Usage:``
 
 run cli.py
+
 Welcome to AWSLI console!
 
 `(cli)` help [tab]
 
-exit                 help                 node_list          
-security_group_list  zone_list   
+>exit                 help                 node_list          
+>security_group_list  zone_list   
 
 `(cli)` ? [tab]
 
-exit                 help                 node_list
+>exit                help                node_list
 
 `(cli)` help node[tab]_list
 

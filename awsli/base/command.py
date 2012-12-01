@@ -1,10 +1,22 @@
 import sys
 import optparse
 import json
+import cmd
 
 class BaseCommand(object):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, load_default_options=True, *args, **kwargs):
         self.install_optparse()
+        if load_default_options:
+            self.set_default_options()
+        self.add_options()
+        self.options, self.args = {},[]
+        #too early to pass inputs here; line interpreter may not be initialized yet
+#        self.options, self.arguments = self.parser.parse_args()
+
+    def install_optparse(self):
+        self.parser = optparse.OptionParser()
+        
+    def set_default_options(self):
         self.parser.set_defaults(
             config_file='~/.awsli',
             public_key='~/.ssh/id_rsa.pub'
@@ -32,14 +44,11 @@ class BaseCommand(object):
                 dest="raw",
                 default=False,
                 help="print output raw - as is"
-        )
-
-        self.add_options()
-        self.options, self.arguments = self.parser.parse_args()
-
-    def install_optparse(self):
-        self.parser = optparse.OptionParser()
-
+        ) 
+#        #needed for determining cmd interface options from default options
+#        self.default_options = self.parser._long_opt.keys()
+#        self.default_options.extend(self.parser._short_opt.keys())
+        
     def is_iterable(self, obj):
         try:
             iter(obj)
@@ -95,10 +104,21 @@ class BaseCommand(object):
     def process_response(self, response):
         output = self.get_output(response)
         return self.print_output(output)
-
-    def execute(self):
-        response = 'must overload execute'
-        return process_response(response)
+    
+    def get_aws_response(self):
+        """
+        Overide and implement aws command specific actions here 
+        and return output
+        """
+        return 'Options: %s\nArgs: %s\nMessage: Must overload get_response'%(self.options,self.arguments)
+    
+    def execute(self, args=sys.argv[1:]):
+        """
+        May be overided as well instead of get_response
+        """
+        self.options, self.arguments = self.parser.parse_args(args)
+        response = self.get_aws_response()
+        return self.process_response(response)
 
 if __name__ == '__main__':
     bc = BaseCommand()

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from awsli.base import *
+import sys
 
 
 class AWSZonesList(BaseCommand, AWSConnectionMixin):
@@ -10,10 +11,15 @@ class AWSZonesList(BaseCommand, AWSConnectionMixin):
         formatted['name']        = item.name
         formatted['endpoint']    = item.endpoint
         return formatted
-
-    def execute(self):
+    
+    def get_aws_response(self):
         regions = self.conn.get_all_regions()
-        return self.process_response(regions)
+        return regions
+    
+#    def execute(self, args=sys.argv[1:]):
+#        self.options, self.arguments = self.parser.parse_args([args])
+#        regions = self.conn.get_all_regions()
+#        return self.process_response(regions)
 
 if __name__ == '__main__':
     bc = AWSZonesList()

@@ -46,11 +46,11 @@ $ a2z [tab]
 
 node_list    security_group_list     zone_list   
 
-$ help [tab]
+$ a2z help [tab]
 
 node_list   security_group_list    zone_list
 
-$ help node_list
+$ a2z help node_list -h
 
 Usage: node_list [options]
 

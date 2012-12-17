@@ -6,10 +6,6 @@ AWSLI
 **Author:** Val Neekman [ info@neekware.com, @vneekman ]
 
 
-Credit
-=======
-
-
 Overview
 ========
 
@@ -90,6 +86,12 @@ Changelog
 -----
 
 * Initial release
+
+
+Credits
+=======
+1. Sam Odivwri [sam.ese.odivwri@gmail.com]
+
 
 
 License

@@ -8,8 +8,6 @@ AWSLI
 
 Credit
 =======
-**Contributor(s):** 
-    1. Sam Odivwri [sam.ese.odivwri@gmail.com]
 
 
 Overview
@@ -38,22 +36,23 @@ How to use
 
 ``Usage:``
 
-run cli.py
+$ . a2z.sh
 
-Welcome to AWSLI console!
+$ a2z help
 
-`(cli)` help [tab]
+Usage: a2z [-l|ls|list|-h|help] <command> [options]
 
->exit                 help                 node_list
->security_group_list  zone_list   
+$ a2z [tab]
 
-`(cli)` ? [tab]
+node_list    security_group_list     zone_list   
 
->exit                help                node_list
+$ a2z help [tab]
 
-`(cli)` help node[tab]_list
+node_list   security_group_list    zone_list
 
-Usage: node_list.py [options]
+$ a2z help node_list -h
+
+Usage: node_list [options]
 
 Options:
 
@@ -72,8 +71,7 @@ Options:
   -j, --json            print output as json when possible
   
   -r, --raw             print output raw - as is
-  
-`(cli)` 
+   
 
 ``Note:``
 

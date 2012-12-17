@@ -1,4 +1,4 @@
-import sys
+import sys, os
 import optparse
 import json
 import cmd
@@ -14,7 +14,8 @@ class BaseCommand(object):
 #        self.options, self.arguments = self.parser.parse_args()
 
     def install_optparse(self):
-        self.parser = optparse.OptionParser()
+        #strip .py from filename
+        self.parser = optparse.OptionParser(prog = os.path.basename(sys.argv[0])[:-3])
         
     def set_default_options(self):
         self.parser.set_defaults(
